@@ -1,27 +1,26 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
-import { IoSearchOutline } from "react-icons/io5";
-import { FaKeyboard } from "react-icons/fa";
-import { TfiClose } from "react-icons/tfi";
-import Image from "next/image";
 import Link from "next/link";
+import Image from "next/image";
+import { IoSearchOutline } from "react-icons/io5";
+import { FaKeyboard, FaMicrophone } from "react-icons/fa";
+import { TfiClose } from "react-icons/tfi";
 
+import useTopBar from "@/hooks/useTopBar";
 import HamburgerIcon from "./HamburgerIcon";
 
 const TopBar = () => {
-  const [isTyping, setIsTyping] = useState(false);
-  const [inputValue, setInputValue] = useState("");
-
-  const isInputFocusedStyles = isTyping
-    ? "border-[#065fd4]"
-    : "border-[#303030]";
-
-  const shouldShowClear = !!inputValue;
-
-  const handleChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setInputValue(e.target.value);
-  };
+  const {
+    isInputFocusedStyles,
+    shouldShowClear,
+    isTyping,
+    inputValue,
+    showToolTip,
+    setShowToolTip,
+    handleChangeInput,
+    setIsTyping,
+    setInputValue,
+  } = useTopBar();
 
   return (
     <div className="flex justify-between items-center px-8 pt-2 w-full h-[56px]">
@@ -33,6 +32,7 @@ const TopBar = () => {
             alt="Youtube Premium"
             width={130}
             height={20}
+            priority
           />
         </Link>
       </div>
@@ -64,8 +64,8 @@ const TopBar = () => {
               <button className="flex items-center gap-2">
                 {shouldShowClear && (
                   <TfiClose
-                    size={24}
-                    className="hover:bg-[rgba(255,255,255,0.3)] p-1 rounded-full"
+                    size={30}
+                    className="hover:bg-[rgba(255,255,255,0.1)] p-1 rounded-full transition"
                     onClick={() => setInputValue("")}
                   />
                 )}
@@ -76,7 +76,19 @@ const TopBar = () => {
         <button className="bg-[#222222] px-6 rounded-r-4xl h-[40px]">
           <IoSearchOutline size={24} />
         </button>
-        <button>microphone</button>
+        <button
+          className="relative bg-[rgba(255,255,255,0.1)] hover:bg-[rgba(255,255,255,0.2)] active:bg-[rgba(255,255,255,0.3)] ml-4 p-3 border active:border-[rgba(255,255,255,0.3)] border-transparent rounded-full transition"
+          onMouseEnter={() => setShowToolTip(true)}
+          onMouseLeave={() => setShowToolTip(false)}
+          onClick={() => console.log("clicked")}
+        >
+          <FaMicrophone size={18} />
+          {showToolTip && (
+            <div className="top-[150%] left-[50%] absolute bg-[rgba(255,255,255,0.2)] p-2 rounded-md text-[12px] text-nowrap -translate-x-[50%]">
+              Wyszukaj głosowo
+            </div>
+          )}
+        </button>
       </div>
 
       <div className="">right section</div>
