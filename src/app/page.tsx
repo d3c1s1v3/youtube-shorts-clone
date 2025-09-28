@@ -4,6 +4,7 @@ export default function IndexPage() {
   return (
     <>
       <TopBar />
+      <main></main>
     </>
   );
 }

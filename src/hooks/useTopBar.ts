@@ -11,8 +11,15 @@ const useTopBar = () => {
 
   const shouldShowClear = !!inputValue;
 
-  const handleChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChangeInput = (e: React.ChangeEvent<HTMLInputElement>) =>
     setInputValue(e.target.value);
+
+  const handleSubmit = (selectedValue: string) => {
+    setInputValue(selectedValue);
+
+    setTimeout(() => {
+      setIsTyping(false);
+    }, 80);
   };
 
   return {
@@ -25,7 +32,7 @@ const useTopBar = () => {
     handleChangeInput,
     setIsTyping,
     setInputValue,
+    handleSubmit,
   };
 };
-
 export default useTopBar;
