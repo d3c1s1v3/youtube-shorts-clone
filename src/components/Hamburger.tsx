@@ -2,7 +2,7 @@ type Props = {
   onClick: () => void;
 };
 
-const HamburgerIcon = ({ onClick }: Props) => {
+const Hamburger = ({ onClick }: Props) => {
   return (
     <button
       onClick={onClick}
@@ -15,4 +15,4 @@ const HamburgerIcon = ({ onClick }: Props) => {
   );
 };
 
-export default HamburgerIcon;
+export default Hamburger;

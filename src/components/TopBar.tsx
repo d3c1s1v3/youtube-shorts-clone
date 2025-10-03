@@ -2,17 +2,17 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import { useEffect } from "react";
 import { IoSearchOutline } from "react-icons/io5";
-import { FaKeyboard, FaMicrophone } from "react-icons/fa";
-import { TfiClose } from "react-icons/tfi";
+import { FaMicrophone } from "react-icons/fa";
 
-import useTopBar from "@/hooks/useTopBar";
-import HamburgerIcon from "./HamburgerIcon";
+import { useAppContext } from "@/contexts/AppContext";
+import SearchInput from "./SearchInput";
 import SuggestionDropdown from "./SuggestionDropdown";
+import HamburgerIcon from "./Hamburger";
 
-const TopBar = () => {
+const Topbar = () => {
   const {
-    isInputFocusedStyles,
     shouldShowClear,
     isTyping,
     inputValue,
@@ -20,12 +20,24 @@ const TopBar = () => {
     setShowToolTip,
     handleChangeInput,
     setIsTyping,
-    setInputValue,
+    onFocus,
+    onClear,
     handleSubmit,
-  } = useTopBar();
+  } = useAppContext();
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape" && isTyping) setIsTyping(false);
+    };
+
+    if (isTyping) document.addEventListener("keydown", handleKeyDown);
+
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, [isTyping, setIsTyping]);
 
   return (
-    <div className="flex justify-between items-center px-8 pt-2 w-full h-[56px]">
+    <div className="flex justify-between items-center px-5 pt-2 w-full h-[56px]">
+      {/* Left section */}
       <div className="flex items-center gap-1">
         <HamburgerIcon onClick={() => console.log("hamburger clicked.")} />
         <Link href="/">
@@ -39,46 +51,23 @@ const TopBar = () => {
         </Link>
       </div>
 
-      <div className="flex items-center w-[640px]">
-        <div
-          className={`flex items-center border ${isInputFocusedStyles} rounded-l-4xl h-[40px] cursor-text w-full relative`}
-        >
-          {isTyping && (
-            <div className="pl-4">
-              <IoSearchOutline size={20} />
-            </div>
-          )}
-          <div className="flex items-center ml-auto w-full h-[24px]">
-            <form className="ml-6 outline-none w-full">
-              <input
-                type="text"
-                placeholder="Szukaj"
-                className="ml-6 outline-none w-full"
-                value={inputValue}
-                onFocus={() => setIsTyping(true)}
-                onChange={handleChangeInput}
-              />
-            </form>
-            <div className="flex items-center gap-2 px-2">
-              <button className="flex items-center gap-2">
-                <FaKeyboard size={18} />
-              </button>
-              <button className="flex items-center gap-2">
-                {shouldShowClear && (
-                  <TfiClose
-                    size={30}
-                    className="hover:bg-[rgba(255,255,255,0.1)] p-1 rounded-full transition"
-                    onClick={() => {
-                      setInputValue("");
-                      setIsTyping(false);
-                    }}
-                  />
-                )}
-              </button>
-            </div>
-          </div>
-          {isTyping && <SuggestionDropdown handleSubmit={handleSubmit} />}
-        </div>
+      {/* Center section */}
+      <div className="relative flex items-center w-[640px]">
+        <SearchInput
+          isTyping={isTyping}
+          inputValue={inputValue}
+          onFocus={onFocus}
+          onChange={handleChangeInput}
+          onClear={onClear}
+          shouldShowClear={shouldShowClear}
+        />
+        {isTyping && (
+          <SuggestionDropdown
+            handleSubmit={handleSubmit}
+            isOpen={isTyping}
+            onClose={() => setIsTyping(false)}
+          />
+        )}
         <button className="bg-[#222222] px-6 rounded-r-4xl h-[40px]">
           <IoSearchOutline size={24} />
         </button>
@@ -97,9 +86,10 @@ const TopBar = () => {
         </button>
       </div>
 
+      {/* Right section */}
       <div className="">right section</div>
     </div>
   );
 };
 
-export default TopBar;
+export default Topbar;

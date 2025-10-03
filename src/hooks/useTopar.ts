@@ -1,18 +1,21 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 
-const useTopBar = () => {
+const useTopbar = () => {
   const [isTyping, setIsTyping] = useState(false);
   const [inputValue, setInputValue] = useState("");
   const [showToolTip, setShowToolTip] = useState(false);
-
-  const isInputFocusedStyles = isTyping
-    ? "border-[#065fd4]"
-    : "border-[#303030]";
 
   const shouldShowClear = !!inputValue;
 
   const handleChangeInput = (e: React.ChangeEvent<HTMLInputElement>) =>
     setInputValue(e.target.value);
+
+  const onFocus = useCallback(() => setIsTyping(true), [setIsTyping]);
+
+  const onClear = useCallback(() => {
+    setInputValue("");
+    setIsTyping(false);
+  }, [setInputValue, setIsTyping]);
 
   const handleSubmit = (selectedValue: string) => {
     setInputValue(selectedValue);
@@ -23,7 +26,6 @@ const useTopBar = () => {
   };
 
   return {
-    isInputFocusedStyles,
     shouldShowClear,
     isTyping,
     inputValue,
@@ -31,8 +33,9 @@ const useTopBar = () => {
     setShowToolTip,
     handleChangeInput,
     setIsTyping,
-    setInputValue,
+    onFocus,
+    onClear,
     handleSubmit,
   };
 };
-export default useTopBar;
+export default useTopbar;

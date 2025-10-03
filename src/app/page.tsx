@@ -1,10 +1,5 @@
-import TopBar from "@/components/TopBar";
+import { redirect } from "next/navigation";
 
 export default function IndexPage() {
-  return (
-    <>
-      <TopBar />
-      <main></main>
-    </>
-  );
+  redirect("/shorts");
 }
