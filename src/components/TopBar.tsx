@@ -36,22 +36,17 @@ const Topbar = () => {
   }, [isTyping, setIsTyping]);
 
   return (
-    <div className="flex justify-between items-center px-5 pt-2 w-full h-[56px]">
-      {/* Left section */}
-      <div className="flex items-center gap-1">
-        <HamburgerIcon onClick={() => console.log("hamburger clicked.")} />
-        <Link href="/">
-          <Image
-            src="/logo-full.png"
-            alt="Youtube Premium"
-            width={130}
-            height={20}
-            priority
-          />
-        </Link>
-      </div>
-
+    <div className="right-0 fixed flex justify-between items-center pt-2 pr-5 w-[calc(100%-80px)] h-[56px]">
       {/* Center section */}
+      <Link href="/">
+        <Image
+          src="/logo-full.png"
+          alt="Youtube Premium"
+          width={130}
+          height={20}
+          priority
+        />
+      </Link>
       <div className="relative flex items-center w-[640px]">
         <SearchInput
           isTyping={isTyping}
