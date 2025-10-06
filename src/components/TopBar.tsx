@@ -9,7 +9,8 @@ import { FaMicrophone } from "react-icons/fa";
 import { useAppContext } from "@/contexts/AppContext";
 import SearchInput from "./SearchInput";
 import SuggestionDropdown from "./SuggestionDropdown";
-import HamburgerIcon from "./Hamburger";
+import Button from "./ui/Button";
+import { FaPlus } from "@/components/icons";
 
 const Topbar = () => {
   const {
@@ -36,8 +37,7 @@ const Topbar = () => {
   }, [isTyping, setIsTyping]);
 
   return (
-    <div className="right-0 fixed flex justify-between items-center pt-2 pr-5 w-[calc(100%-80px)] h-[56px]">
-      {/* Center section */}
+    <div className="right-0 fixed flex justify-between items-center pt-2 pr-5 pl-1 w-[calc(100%-80px)] h-[56px]">
       <Link href="/">
         <Image
           src="/logo-full.png"
@@ -47,26 +47,28 @@ const Topbar = () => {
           priority
         />
       </Link>
-      <div className="relative flex items-center w-[640px]">
-        <SearchInput
-          isTyping={isTyping}
-          inputValue={inputValue}
-          onFocus={onFocus}
-          onChange={handleChangeInput}
-          onClear={onClear}
-          shouldShowClear={shouldShowClear}
-        />
-        {isTyping && (
-          <SuggestionDropdown
-            handleSubmit={handleSubmit}
-            isOpen={isTyping}
-            onClose={() => setIsTyping(false)}
+      <div className="flex items-center w-[740px]">
+        <div className="relative flex w-[536px]">
+          <SearchInput
+            isTyping={isTyping}
+            inputValue={inputValue}
+            onFocus={onFocus}
+            onChange={handleChangeInput}
+            onClear={onClear}
+            shouldShowClear={shouldShowClear}
           />
-        )}
-        <button className="bg-[#222222] px-6 rounded-r-4xl h-[40px]">
-          <IoSearchOutline size={24} />
-        </button>
-        <button
+          {isTyping && (
+            <SuggestionDropdown
+              handleSubmit={handleSubmit}
+              isOpen={isTyping}
+              onClose={() => setIsTyping(false)}
+            />
+          )}
+          <Button className="bg-[#222222] px-6 rounded-r-4xl h-[40px]">
+            <IoSearchOutline size={24} />
+          </Button>
+        </div>
+        <Button
           className="relative bg-[rgba(255,255,255,0.1)] hover:bg-[rgba(255,255,255,0.2)] active:bg-[rgba(255,255,255,0.3)] ml-4 p-3 border active:border-[rgba(255,255,255,0.3)] border-transparent rounded-full transition"
           onMouseEnter={() => setShowToolTip(true)}
           onMouseLeave={() => setShowToolTip(false)}
@@ -78,11 +80,17 @@ const Topbar = () => {
               Wyszukaj głosowo
             </div>
           )}
-        </button>
+        </Button>
       </div>
 
-      {/* Right section */}
-      <div className="">right section</div>
+      <div className="">
+        <Button className="bg-[rgba(255,255,255,0.1)] hover:bg-[rgba(255,255,255,0.2)] active:bg-[rgba(255,255,255,0.3)] ml-4 px-4 py-2 border active:border-[rgba(255,255,255,0.3)] border-transparent rounded-full transition">
+          <div className="flex gap-3">
+            <FaPlus size={18} />
+            <span className="text-sm">Utwórz</span>
+          </div>
+        </Button>
+      </div>
     </div>
   );
 };

@@ -1,7 +1,7 @@
 import { useRef } from "react";
-import { TfiClose } from "react-icons/tfi";
-import { FaKeyboard } from "react-icons/fa";
-import { IoSearchOutline } from "react-icons/io5";
+
+import { IoSearchOutline, FaKeyboard, TfiClose } from "@/components/icons";
+import Button from "./ui/Button";
 
 type Props = {
   isTyping: boolean;
@@ -46,17 +46,17 @@ const SearchInput = ({
           />
         </form>
         <div className="flex items-center gap-2 px-2">
-          <button className="flex items-center gap-2">
+          <Button className="flex items-center gap-2">
             <FaKeyboard size={18} />
-          </button>
-          <button className="flex items-center gap-2" onClick={onClear}>
+          </Button>
+          <Button className="flex items-center gap-2" onClick={onClear}>
             {shouldShowClear && (
               <TfiClose
                 size={30}
                 className="hover:bg-[rgba(255,255,255,0.1)] p-1 rounded-full transition"
               />
             )}
-          </button>
+          </Button>
         </div>
       </div>
     </div>

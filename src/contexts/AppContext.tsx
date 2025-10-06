@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useContext, ReactNode } from "react";
+import { createContext, use, ReactNode } from "react";
 
 import useTopbar from "@/hooks/useTopar";
 
@@ -33,7 +33,7 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
 };
 
 export const useAppContext = () => {
-  const context = useContext(AppContext);
+  const context = use(AppContext);
   if (!context) {
     throw new Error("useAppContext must be used within AppProvider");
   }
