@@ -3,14 +3,17 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useEffect } from "react";
-import { IoSearchOutline } from "react-icons/io5";
-import { FaMicrophone } from "react-icons/fa";
 
 import { useAppContext } from "@/contexts/AppContext";
+import {
+  FaPlus,
+  FaMicrophone,
+  IoSearchOutline,
+  IoNotificationsOutline,
+} from "@/components/icons";
 import SearchInput from "./SearchInput";
 import SuggestionDropdown from "./SuggestionDropdown";
 import Button from "./ui/Button";
-import { FaPlus } from "@/components/icons";
 
 const Topbar = () => {
   const {
@@ -83,11 +86,19 @@ const Topbar = () => {
         </Button>
       </div>
 
-      <div className="">
+      <div className="flex items-center gap-3">
         <Button className="bg-[rgba(255,255,255,0.1)] hover:bg-[rgba(255,255,255,0.2)] active:bg-[rgba(255,255,255,0.3)] ml-4 px-4 py-2 border active:border-[rgba(255,255,255,0.3)] border-transparent rounded-full transition">
           <div className="flex gap-3">
             <FaPlus size={18} />
             <span className="text-sm">Utwórz</span>
+          </div>
+        </Button>
+        <Button>
+          <IoNotificationsOutline size={22} />
+        </Button>
+        <Button>
+          <div className="flex justify-center items-center bg-[#78909c] rounded-full w-8 h-8 text-[18px]">
+            O
           </div>
         </Button>
       </div>

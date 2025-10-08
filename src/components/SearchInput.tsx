@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { FormEvent, useRef } from "react";
 
 import { IoSearchOutline, FaKeyboard, TfiClose } from "@/components/icons";
 import Button from "./ui/Button";
@@ -24,6 +24,11 @@ const SearchInput = ({
 
   const isActiveStyles = isTyping ? "border-[#065fd4]" : "border-[#303030]";
 
+  const handleFormSubmit = (e: FormEvent) => {
+    e.preventDefault();
+    console.log("form submitted");
+  };
+
   return (
     <div
       className={`flex items-center border ${isActiveStyles} rounded-l-4xl h-[40px] cursor-text w-full relative`}
@@ -34,7 +39,7 @@ const SearchInput = ({
         </div>
       )}
       <div className="flex items-center ml-auto w-full h-[24px]">
-        <form className="block w-full" onSubmit={(e) => e.preventDefault()}>
+        <form className="block w-full" onSubmit={handleFormSubmit}>
           <input
             type="text"
             placeholder="Szukaj"
