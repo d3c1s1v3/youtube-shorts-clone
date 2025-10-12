@@ -1,9 +1,8 @@
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 const useTopbar = () => {
   const [isTyping, setIsTyping] = useState(false);
   const [inputValue, setInputValue] = useState("");
-  const [showToolTip, setShowToolTip] = useState(false);
 
   const shouldShowClear = !!inputValue;
 
@@ -25,12 +24,20 @@ const useTopbar = () => {
     }, 80);
   };
 
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape" && isTyping) setIsTyping(false);
+    };
+
+    if (isTyping) document.addEventListener("keydown", handleKeyDown);
+
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, [isTyping, setIsTyping]);
+
   return {
     shouldShowClear,
     isTyping,
     inputValue,
-    showToolTip,
-    setShowToolTip,
     handleChangeInput,
     setIsTyping,
     onFocus,

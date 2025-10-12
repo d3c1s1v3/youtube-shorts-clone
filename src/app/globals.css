@@ -1,11 +1,24 @@
 @import "tailwindcss";
 
-body {
-  background-color: #0f0f0f;
-  overflow: hidden;
-  color: white;
+@theme {
+  --color-background-dark: #222222;
+  --color-background-darker: #181818;
+  --color-background-darkest: #0f0f0f;
+  --color-accent-red: #e1002d;
+  --color-accent-blue: #065fd4;
+  --color-accent-gray: #303030;
+  --color-avatar-icon: #78909c;
+
+  --color-overlay-light: rgba(255, 255, 255, 0.1);
+  --color-overlay-medium: rgba(255, 255, 255, 0.2);
+  --color-overlay-heavy: rgba(255, 255, 255, 0.3);
 }
 
-button {
-  cursor: pointer;
+@layer base {
+  body {
+    @apply bg-background-darkest max-h-screen overflow-hidden text-white;
+  }
+  button {
+    @apply cursor-pointer;
+  }
 }

@@ -1,7 +1,9 @@
+"use client";
+
 import { FormEvent, useRef } from "react";
 
 import { IoSearchOutline, FaKeyboard, TfiClose } from "@/components/icons";
-import Button from "./ui/Button";
+import { Button } from "@/components";
 
 type Props = {
   isTyping: boolean;
@@ -22,7 +24,7 @@ const SearchInput = ({
 }: Props) => {
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const isActiveStyles = isTyping ? "border-[#065fd4]" : "border-[#303030]";
+  const isActiveStyles = isTyping ? "border-accent-blue" : "border-accent-gray";
 
   const handleFormSubmit = (e: FormEvent) => {
     e.preventDefault();
@@ -58,7 +60,7 @@ const SearchInput = ({
             {shouldShowClear && (
               <TfiClose
                 size={30}
-                className="hover:bg-[rgba(255,255,255,0.1)] p-1 rounded-full transition"
+                className="hover:bg-overlay-light p-1 rounded-full transition"
               />
             )}
           </Button>

@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 
 export async function GET() {
-  const array = [1, 2, 3];
+  const res = "Hello from API endpoint";
 
-  return NextResponse.json(array);
+  return NextResponse.json(res);
 }

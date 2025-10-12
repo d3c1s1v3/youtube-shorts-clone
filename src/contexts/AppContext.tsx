@@ -2,21 +2,19 @@
 
 import { createContext, use, ReactNode } from "react";
 
-import useTopbar from "@/hooks/useTopar";
+import { useTopbar } from "@/hooks";
 
 type AppContextType = {
   isTyping: boolean;
   inputValue: string;
-  showToolTip: boolean;
+  sidebarOpen?: boolean;
+  shouldShowClear: boolean;
   setIsTyping: (typing: boolean) => void;
   setInputValue?: (value: string) => void;
-  setShowToolTip: (show: boolean) => void;
   handleChangeInput: (e: React.ChangeEvent<HTMLInputElement>) => void;
   handleSubmit: (value: string) => void;
   onFocus: () => void;
   onClear: () => void;
-  shouldShowClear: boolean;
-  sidebarOpen?: boolean;
   setSidebarOpen?: (open: boolean) => void;
 };
 

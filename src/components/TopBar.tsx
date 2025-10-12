@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useEffect } from "react";
 
 import { useAppContext } from "@/contexts/AppContext";
 import {
@@ -11,17 +10,15 @@ import {
   IoSearchOutline,
   IoNotificationsOutline,
 } from "@/components/icons";
-import SearchInput from "./SearchInput";
-import SuggestionDropdown from "./SuggestionDropdown";
-import Button from "./ui/Button";
+
+import { Button, SuggestionDropdown, SearchInput } from "@/components";
+import { useTooltip } from "@/hooks";
 
 const Topbar = () => {
   const {
     shouldShowClear,
     isTyping,
     inputValue,
-    showToolTip,
-    setShowToolTip,
     handleChangeInput,
     setIsTyping,
     onFocus,
@@ -29,15 +26,7 @@ const Topbar = () => {
     handleSubmit,
   } = useAppContext();
 
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape" && isTyping) setIsTyping(false);
-    };
-
-    if (isTyping) document.addEventListener("keydown", handleKeyDown);
-
-    return () => document.removeEventListener("keydown", handleKeyDown);
-  }, [isTyping, setIsTyping]);
+  const { tooltip, tooltipHandlers } = useTooltip();
 
   return (
     <div className="right-0 fixed flex justify-between items-center pt-2 pr-5 pl-1 w-[calc(100%-80px)] h-[56px]">
@@ -67,37 +56,39 @@ const Topbar = () => {
               onClose={() => setIsTyping(false)}
             />
           )}
-          <Button className="bg-[#222222] px-6 rounded-r-4xl h-[40px]">
+          <Button className="bg-background-dark px-6 rounded-r-4xl h-[40px]">
             <IoSearchOutline size={24} />
           </Button>
         </div>
         <Button
-          className="relative bg-[rgba(255,255,255,0.1)] hover:bg-[rgba(255,255,255,0.2)] active:bg-[rgba(255,255,255,0.3)] ml-4 p-3 border active:border-[rgba(255,255,255,0.3)] border-transparent rounded-full transition"
-          onMouseEnter={() => setShowToolTip(true)}
-          onMouseLeave={() => setShowToolTip(false)}
+          className="relative bg-overlay-light hover:bg-overlay-medium active:bg-overlay-heavy ml-4 p-3 border active:border-overlay-heavy border-transparent rounded-full transition"
+          {...tooltipHandlers("Wyszukaj głosowo")}
           onClick={() => console.log("clicked microphone icon")}
         >
           <FaMicrophone size={18} />
-          {showToolTip && (
-            <div className="top-[150%] left-[50%] absolute bg-[rgba(255,255,255,0.2)] p-2 rounded-md text-[12px] text-nowrap -translate-x-[50%]">
-              Wyszukaj głosowo
+          {tooltip.isVisible && (
+            <div className="top-[150%] left-[50%] absolute bg-overlay-medium p-2 rounded-md text-[12px] text-nowrap -translate-x-[50%]">
+              {tooltip.text}
             </div>
           )}
         </Button>
       </div>
 
-      <div className="flex items-center gap-3">
-        <Button className="bg-[rgba(255,255,255,0.1)] hover:bg-[rgba(255,255,255,0.2)] active:bg-[rgba(255,255,255,0.3)] ml-4 px-4 py-2 border active:border-[rgba(255,255,255,0.3)] border-transparent rounded-full transition">
+      <div className="flex items-center gap-5">
+        <Button className="bg-overlay-light hover:bg-overlay-medium active:bg-overlay-heavy ml-4 px-4 py-2 border active:border-[rgba(255,255,255,0.3)] border-transparent rounded-full transition">
           <div className="flex gap-3">
             <FaPlus size={18} />
             <span className="text-sm">Utwórz</span>
           </div>
         </Button>
-        <Button>
-          <IoNotificationsOutline size={22} />
+        <Button className="relative">
+          <IoNotificationsOutline size={24} />
+          <div className="-top-1 -right-2 absolute flex justify-center items-center rounded-lg w-5 h-4 text-[12px] bg-accent-red">
+            9+
+          </div>
         </Button>
         <Button>
-          <div className="flex justify-center items-center bg-[#78909c] rounded-full w-8 h-8 text-[18px]">
+          <div className="flex justify-center items-center bg-avatar-icon rounded-full w-8 h-8 text-[18px]">
             O
           </div>
         </Button>

@@ -1,6 +1,4 @@
-import VideoSlider from "@/components/VideoSlider";
-
-const fetchViseos = async () => {};
+import { VideoSlider } from "@/components";
 
 const ShortsPage = async () => {
   return (

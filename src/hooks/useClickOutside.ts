@@ -1,6 +1,6 @@
 import { RefObject, useEffect } from "react";
 
-export const useClickOutside = (
+const useClickOutside = (
   ref: RefObject<HTMLDivElement | null>,
   callback: () => void,
   enabled = true
@@ -21,3 +21,5 @@ export const useClickOutside = (
     ref,
   };
 };
+
+export default useClickOutside;

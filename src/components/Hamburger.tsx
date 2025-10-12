@@ -1,4 +1,4 @@
-import Button from "./ui/Button";
+import { Button } from "@/components";
 
 type Props = {
   onClick: () => void;
@@ -8,7 +8,7 @@ const Hamburger = ({ onClick }: Props) => {
   return (
     <Button
       onClick={onClick}
-      className="flex flex-col justify-center gap-1.5 hover:bg-[rgba(255,255,255,0.1)] active:bg-[rgba(255,255,255,0.3)] p-3 border active:border-[rgba(255,255,255,0.3)] border-transparent rounded-full w-[50px] h-[50px] transition-all"
+      className="flex flex-col justify-center gap-1.5 hover:bg-overlay-light active:bg-overlay-heavy p-3 border active:border-overlay-heavy border-transparent rounded-full w-[50px] h-[50px] transition-all"
     >
       <div className="bg-white w-full h-[1px]" />
       <div className="bg-white w-full h-[1px]" />
