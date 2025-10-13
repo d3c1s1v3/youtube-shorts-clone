@@ -4,6 +4,7 @@ import { FormEvent, useRef } from "react";
 
 import { IoSearchOutline, FaKeyboard, TfiClose } from "@/components/icons";
 import { Button } from "@/components";
+import { useAppContext } from "@/contexts/AppContext";
 
 type Props = {
   isTyping: boolean;
@@ -23,6 +24,8 @@ const SearchInput = ({
   shouldShowClear,
 }: Props) => {
   const inputRef = useRef<HTMLInputElement>(null);
+
+  const { toggleKeyboard } = useAppContext();
 
   const isActiveStyles = isTyping ? "border-accent-blue" : "border-accent-gray";
 
@@ -53,7 +56,7 @@ const SearchInput = ({
           />
         </form>
         <div className="flex items-center gap-2 px-2">
-          <Button className="flex items-center gap-2">
+          <Button className="flex items-center gap-2" onClick={toggleKeyboard}>
             <FaKeyboard size={18} />
           </Button>
           <Button className="flex items-center gap-2" onClick={onClear}>

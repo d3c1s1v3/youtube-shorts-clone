@@ -1,6 +1,4 @@
 import { ReactNode } from "react";
-import clsx from "clsx";
-import { twMerge } from "tailwind-merge";
 import { MouseEventHandler } from "react";
 
 type Props = {
@@ -20,7 +18,7 @@ const Button = ({
 }: Props) => {
   return (
     <button
-      className={twMerge(clsx(className))}
+      className={className}
       onClick={onClick}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}

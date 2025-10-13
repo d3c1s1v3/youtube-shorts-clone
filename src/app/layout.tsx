@@ -4,6 +4,7 @@ import { Roboto } from "next/font/google";
 import "./globals.css";
 import { Topbar, Sidebar } from "@/components";
 import { AppProvider } from "@/contexts/AppContext";
+import Keyboard from "@/components/Keyboard/Keyboard";
 
 const roboto = Roboto({
   subsets: ["latin"],
@@ -26,6 +27,7 @@ export default function RootLayout({
         <AppProvider>
           <Topbar />
           <Sidebar />
+          <Keyboard />
           {children}
         </AppProvider>
       </body>
