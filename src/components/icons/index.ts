@@ -2,6 +2,7 @@ import {
   IoHomeOutline,
   IoSearchOutline,
   IoNotificationsOutline,
+  IoCloseSharp,
 } from "react-icons/io5";
 import { SiYoutubeshorts, SiYoutubemusic } from "react-icons/si";
 import { MdOutlineSubscriptions } from "react-icons/md";
@@ -17,6 +18,7 @@ export {
   IoHomeOutline,
   IoSearchOutline,
   IoNotificationsOutline,
+  IoCloseSharp,
   SiYoutubeshorts,
   SiYoutubemusic,
   MdOutlineSubscriptions,

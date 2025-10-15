@@ -5,13 +5,17 @@ import { useRef } from "react";
 import { useClickOutside } from "@/hooks";
 import { SUGGESTIONS } from "@/constants";
 
-type Props = {
+interface SuggestionDropdownProps {
   handleSubmit: (selectedValue: string) => void;
   isOpen: boolean;
   onClose: () => void;
-};
+}
 
-const SuggestionDropdown = ({ handleSubmit, isOpen, onClose }: Props) => {
+const SuggestionDropdown = ({
+  handleSubmit,
+  isOpen,
+  onClose,
+}: SuggestionDropdownProps) => {
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   useClickOutside(dropdownRef, onClose, isOpen);

@@ -1,13 +1,13 @@
 import Link from "next/link";
 import { IconType } from "react-icons";
 
-type Props = {
+interface SidebarItemProps {
   label: string;
   icon: IconType;
   route: string;
-};
+}
 
-const SidebarItem = ({ label, icon: Icon, route }: Props) => {
+const SidebarItem = ({ label, icon: Icon, route }: SidebarItemProps) => {
   return (
     <li
       className="flex flex-col items-center hover:bg-overlay-light mt-5 rounded-md text-center"

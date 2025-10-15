@@ -3,7 +3,7 @@ import { Roboto } from "next/font/google";
 
 import "./globals.css";
 import { Topbar, Sidebar } from "@/components";
-import { AppProvider } from "@/contexts/AppContext";
+import { AppProvider, KeyboardProvider } from "@/contexts";
 import Keyboard from "@/components/Keyboard/Keyboard";
 
 const roboto = Roboto({
@@ -25,10 +25,12 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${roboto.className} antialiased`}>
         <AppProvider>
-          <Topbar />
-          <Sidebar />
-          <Keyboard />
-          {children}
+          <KeyboardProvider>
+            <Topbar />
+            <Sidebar />
+            <Keyboard />
+            {children}
+          </KeyboardProvider>
         </AppProvider>
       </body>
     </html>

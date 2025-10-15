@@ -1,9 +1,9 @@
-import { useState, useRef, useCallback } from "react";
+import { useState, useRef } from "react";
 
-type ToolTipState = {
+interface ToolTipState {
   isVisible: boolean;
   text: string;
-};
+}
 
 const useTooltip = () => {
   const [tooltip, setTooltip] = useState<ToolTipState>({
@@ -13,22 +13,19 @@ const useTooltip = () => {
 
   const targetRef = useRef<HTMLElement | null>(null);
 
-  const showTooltip = useCallback((text: string) => {
+  const showTooltip = (text: string) => {
     setTooltip({ isVisible: true, text });
-  }, []);
+  };
 
-  const hideTooltip = useCallback(() => {
+  const hideTooltip = () => {
     setTooltip({ isVisible: false, text: "" });
-  }, []);
+  };
 
-  const tooltipHandlers = useCallback(
-    (text: string) => ({
-      onMouseEnter: () => showTooltip(text),
-      onMouseLeave: () => hideTooltip(),
-      ref: targetRef,
-    }),
-    [showTooltip, hideTooltip]
-  );
+  const tooltipHandlers = (text: string) => ({
+    onMouseEnter: () => showTooltip(text),
+    onMouseLeave: () => hideTooltip(),
+    ref: targetRef,
+  });
 
   return {
     tooltip,

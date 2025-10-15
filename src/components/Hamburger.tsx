@@ -1,10 +1,10 @@
 import { Button } from "@/components";
 
-type Props = {
+interface HamburgerProps {
   onClick: () => void;
-};
+}
 
-const Hamburger = ({ onClick }: Props) => {
+const Hamburger = ({ onClick }: HamburgerProps) => {
   return (
     <Button
       onClick={onClick}

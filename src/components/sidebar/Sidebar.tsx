@@ -17,7 +17,7 @@ const Sidebar = () => {
   };
 
   return (
-    <div className={`fixed pt-1.5  h-screen pl-1`}>
+    <aside className={`fixed pt-1.5  h-screen pl-1`}>
       <div className="flex justify-center">
         <Hamburger onClick={toggleHamburgerState} />
       </div>
@@ -28,7 +28,7 @@ const Sidebar = () => {
           ))}
         </ul>
       </div>
-    </div>
+    </aside>
   );
 };
 

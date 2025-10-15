@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
-import { useAppContext } from "@/contexts/AppContext";
+import { useAppContext } from "@/contexts";
 import {
   FaPlus,
   FaMicrophone,

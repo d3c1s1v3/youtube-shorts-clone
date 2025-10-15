@@ -1,12 +1,10 @@
 "use client";
 
-import { createContext, use, ReactNode, useState } from "react";
+import { createContext, useContext, ReactNode } from "react";
 
 import { useTopbar } from "@/hooks";
 
-type KeyboardState = "off" | "on";
-
-type AppContextType = {
+interface AppContextI {
   isTyping: boolean;
   inputValue: string;
   sidebarOpen?: boolean;
@@ -18,31 +16,22 @@ type AppContextType = {
   onFocus: () => void;
   onClear: () => void;
   setSidebarOpen?: (open: boolean) => void;
-  isKeyboardActive: KeyboardState;
-  toggleKeyboard: () => void;
-};
+}
 
-const AppContext = createContext<AppContextType | null>(null);
+const AppContext = createContext<AppContextI | null>(null);
 
 export const AppProvider = ({ children }: { children: ReactNode }) => {
-  const [isKeyboardActive, setIsKeyboardActive] =
-    useState<KeyboardState>("off");
   const topbarState = useTopbar();
-
-  const toggleKeyboard = () =>
-    setIsKeyboardActive((prev) => (prev === "off" ? "on" : "off"));
 
   const value = {
     ...topbarState,
-    isKeyboardActive,
-    toggleKeyboard,
   };
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
 };
 
 export const useAppContext = () => {
-  const context = use(AppContext);
+  const context = useContext(AppContext);
   if (!context) {
     throw new Error("useAppContext must be used within AppProvider");
   }

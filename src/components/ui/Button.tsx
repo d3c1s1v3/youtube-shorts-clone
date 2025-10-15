@@ -1,13 +1,13 @@
 import { ReactNode } from "react";
 import { MouseEventHandler } from "react";
 
-type Props = {
+interface ButtonProps {
   children: ReactNode;
   onClick?: MouseEventHandler<HTMLButtonElement>;
   className?: string;
   onMouseEnter?: MouseEventHandler<HTMLButtonElement>;
   onMouseLeave?: MouseEventHandler<HTMLButtonElement>;
-};
+}
 
 const Button = ({
   children,
@@ -15,7 +15,7 @@ const Button = ({
   onClick,
   onMouseEnter,
   onMouseLeave,
-}: Props) => {
+}: ButtonProps) => {
   return (
     <button
       className={className}

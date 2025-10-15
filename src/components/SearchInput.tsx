@@ -4,16 +4,16 @@ import { FormEvent, useRef } from "react";
 
 import { IoSearchOutline, FaKeyboard, TfiClose } from "@/components/icons";
 import { Button } from "@/components";
-import { useAppContext } from "@/contexts/AppContext";
+import { useKeyboardContext } from "@/contexts";
 
-type Props = {
+interface SearchInputProps {
   isTyping: boolean;
   inputValue: string;
   onFocus: () => void;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onClear: () => void;
   shouldShowClear: boolean;
-};
+}
 
 const SearchInput = ({
   isTyping,
@@ -22,10 +22,10 @@ const SearchInput = ({
   onChange,
   onClear,
   shouldShowClear,
-}: Props) => {
+}: SearchInputProps) => {
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const { toggleKeyboard } = useAppContext();
+  const { toggleVisibility } = useKeyboardContext();
 
   const isActiveStyles = isTyping ? "border-accent-blue" : "border-accent-gray";
 
@@ -56,7 +56,10 @@ const SearchInput = ({
           />
         </form>
         <div className="flex items-center gap-2 px-2">
-          <Button className="flex items-center gap-2" onClick={toggleKeyboard}>
+          <Button
+            className="flex items-center gap-2"
+            onClick={toggleVisibility}
+          >
             <FaKeyboard size={18} />
           </Button>
           <Button className="flex items-center gap-2" onClick={onClear}>

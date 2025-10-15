@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 const useTopbar = () => {
   const [isTyping, setIsTyping] = useState(false);
@@ -9,18 +9,26 @@ const useTopbar = () => {
   const handleChangeInput = (e: React.ChangeEvent<HTMLInputElement>) =>
     setInputValue(e.target.value);
 
-  const onFocus = useCallback(() => setIsTyping(true), [setIsTyping]);
+  const onFocus = () => setIsTyping(true);
 
-  const onClear = useCallback(() => {
+  const onClear = () => {
     setInputValue("");
     setIsTyping(false);
-  }, [setInputValue, setIsTyping]);
+  };
+
+  const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const handleSubmit = (selectedValue: string) => {
     setInputValue(selectedValue);
 
-    setTimeout(() => {
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+      timeoutRef.current = null;
+    }
+
+    timeoutRef.current = setTimeout(() => {
       setIsTyping(false);
+      timeoutRef.current = null;
     }, 80);
   };
 
@@ -32,7 +40,7 @@ const useTopbar = () => {
     if (isTyping) document.addEventListener("keydown", handleKeyDown);
 
     return () => document.removeEventListener("keydown", handleKeyDown);
-  }, [isTyping, setIsTyping]);
+  }, [isTyping]);
 
   return {
     shouldShowClear,

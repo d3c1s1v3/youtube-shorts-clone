@@ -1,5 +1,6 @@
 import useClickOutside from "./useClickOutside";
 import useTooltip from "./useTooltip";
-import useTopbar from "./useTopar";
+import useTopbar from "./useTopbar";
+import useDrag from "./useDrag";
 
-export { useClickOutside, useTooltip, useTopbar };
+export { useClickOutside, useTooltip, useTopbar, useDrag };
