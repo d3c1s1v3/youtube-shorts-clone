@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, use } from "react";
 
 import { useClickOutside } from "@/hooks";
 import { SUGGESTIONS } from "@/constants";
@@ -12,15 +12,15 @@ interface SuggestionDropdownProps {
 }
 
 const SuggestionDropdown = ({
-  handleSubmit,
   isOpen,
   onClose,
+  handleSubmit,
 }: SuggestionDropdownProps) => {
   const dropdownRef = useRef<HTMLDivElement>(null);
 
-  useClickOutside(dropdownRef, onClose, isOpen);
-
   const displayedSuggestions = SUGGESTIONS.slice(0, 15);
+
+  useClickOutside(dropdownRef, onClose, isOpen);
 
   if (!isOpen) return null;
 
@@ -30,7 +30,7 @@ const SuggestionDropdown = ({
       ref={dropdownRef}
     >
       <ul>
-        {displayedSuggestions.slice(0, 15).map((suggestion) => (
+        {displayedSuggestions.map((suggestion) => (
           <li
             key={suggestion.label}
             className="hover:bg-overlay-medium p-2 rounded-md cursor-pointer"

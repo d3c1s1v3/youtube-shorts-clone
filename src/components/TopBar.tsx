@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+// import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -16,13 +16,13 @@ import { Button, SuggestionDropdown, SearchInput } from "@/components";
 import { useTooltip } from "@/hooks";
 
 const Topbar = () => {
-  const [voiceSearch, setVoiceSearch] = useState<"off" | "on">("off");
+  // const [voiceSearch, setVoiceSearch] = useState<"off" | "on">("off");
 
-  const toggleVoiceSearch = () => {
-    const state = voiceSearch === "off" ? "on" : "off";
-    setVoiceSearch(state);
-    console.log("Voice Search:", state);
-  };
+  // const toggleVoiceSearch = () => {
+  //   const state = voiceSearch === "off" ? "on" : "off";
+  //   setVoiceSearch(state);
+  //   console.log("Voice Search:", state);
+  // };
 
   const {
     shouldShowClear,
@@ -72,7 +72,7 @@ const Topbar = () => {
         <Button
           className="relative bg-overlay-light hover:bg-overlay-medium active:bg-overlay-heavy ml-4 p-3 border active:border-overlay-heavy border-transparent rounded-full transition"
           {...tooltipHandlers("Wyszukaj głosowo")}
-          onClick={toggleVoiceSearch}
+          // onClick={toggleVoiceSearch}
         >
           <FaMicrophone size={18} />
           {tooltip.isVisible && (

@@ -18,10 +18,10 @@ interface SearchInputProps {
 const SearchInput = ({
   isTyping,
   inputValue,
+  shouldShowClear,
   onFocus,
   onChange,
   onClear,
-  shouldShowClear,
 }: SearchInputProps) => {
   const inputRef = useRef<HTMLInputElement>(null);
 

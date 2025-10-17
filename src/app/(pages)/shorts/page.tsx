@@ -1,6 +1,6 @@
 import { VideoSlider } from "@/components";
 
-const ShortsPage = async () => {
+const ShortsPage = () => {
   return (
     <div className="flex justify-center items-center w-screen h-screen">
       <VideoSlider />

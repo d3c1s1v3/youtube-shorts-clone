@@ -1,46 +1,52 @@
-import { useState, useEffect, useRef, useCallback } from "react";
+import {
+  useState,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useCallback,
+} from "react";
 
 const useDrag = () => {
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [isDragging, setIsDragging] = useState(false);
-  const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
 
   const keyboardRef = useRef<HTMLDivElement>(null);
+  const dragStartRef = useRef({ x: 0, y: 0 });
+  const isDraggingRef = useRef(false);
 
   const handleMouseDown = (e: React.MouseEvent) => {
-    setIsDragging(true);
-    setDragStart({
+    const start = {
       x: e.clientX - position.x,
       y: e.clientY - position.y,
-    });
+    };
+    setIsDragging(true);
+    isDraggingRef.current = true;
+    dragStartRef.current = start;
   };
 
-  const handleMouseMove = useCallback(
-    (e: MouseEvent) => {
-      if (!isDragging || !keyboardRef.current) return;
+  const handleMouseMove = useCallback((e: MouseEvent) => {
+    if (!isDraggingRef || !keyboardRef.current) return;
 
-      const newX = e.clientX - dragStart.x;
-      const newY = e.clientY - dragStart.y;
+    const newX = e.clientX - dragStartRef.current.x;
+    const newY = e.clientY - dragStartRef.current.y;
 
-      const viewportWidth = window.innerWidth;
-      const viewportHeight = window.innerHeight;
+    const viewportWidth = window.innerWidth;
+    const viewportHeight = window.innerHeight;
 
-      const keyBoardWidth = keyboardRef.current.offsetWidth;
-      const keyBoardHeight = keyboardRef.current.offsetHeight;
+    const keyBoardWidth = keyboardRef.current.offsetWidth;
+    const keyBoardHeight = keyboardRef.current.offsetHeight;
 
-      const constrainedX = Math.max(
-        0,
-        Math.min(newX, viewportWidth - keyBoardWidth)
-      );
-      const constrainedY = Math.max(
-        0,
-        Math.min(newY, viewportHeight - keyBoardHeight)
-      );
+    const constrainedX = Math.max(
+      0,
+      Math.min(newX, viewportWidth - keyBoardWidth)
+    );
+    const constrainedY = Math.max(
+      0,
+      Math.min(newY, viewportHeight - keyBoardHeight)
+    );
 
-      setPosition({ x: constrainedX, y: constrainedY });
-    },
-    [isDragging, dragStart.x, dragStart.y]
-  );
+    setPosition({ x: constrainedX, y: constrainedY });
+  }, []);
 
   const handleMouseUp = useCallback(() => setIsDragging(false), []);
 
@@ -48,9 +54,6 @@ const useDrag = () => {
     if (isDragging) {
       document.addEventListener("mousemove", handleMouseMove);
       document.addEventListener("mouseup", handleMouseUp);
-    } else {
-      document.removeEventListener("mousemove", handleMouseMove);
-      document.removeEventListener("mouseup", handleMouseUp);
     }
 
     return () => {
@@ -59,9 +62,14 @@ const useDrag = () => {
     };
   }, [isDragging, handleMouseMove, handleMouseUp]);
 
-  useEffect(() => {
-    const initialX = window.innerWidth - 517;
-    const initialY = window.innerHeight - 214;
+  useLayoutEffect(() => {
+    const el = keyboardRef.current;
+    const keyboardWidth = el?.offsetWidth || 517;
+    const keyboardHeight = el?.offsetHeight || 214;
+
+    const initialX = window.innerWidth - keyboardWidth;
+    const initialY = window.innerHeight - keyboardHeight;
+
     setPosition({ x: initialX, y: initialY });
   }, []);
 
