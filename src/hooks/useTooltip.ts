@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState } from "react";
 
 interface ToolTipState {
   isVisible: boolean;
@@ -11,8 +11,6 @@ const useTooltip = () => {
     text: "",
   });
 
-  const targetRef = useRef<HTMLElement | null>(null);
-
   const showTooltip = (text: string) => {
     setTooltip({ isVisible: true, text });
   };
@@ -24,7 +22,6 @@ const useTooltip = () => {
   const tooltipHandlers = (text: string) => ({
     onMouseEnter: () => showTooltip(text),
     onMouseLeave: () => hideTooltip(),
-    ref: targetRef,
   });
 
   return {
@@ -32,7 +29,6 @@ const useTooltip = () => {
     showTooltip,
     hideTooltip,
     tooltipHandlers,
-    targetRef,
   };
 };
 
