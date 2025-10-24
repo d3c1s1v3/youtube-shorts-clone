@@ -4,7 +4,7 @@ import { Roboto } from "next/font/google";
 import "./globals.css";
 import { Topbar, Sidebar } from "@/components";
 import { AppProvider, KeyboardProvider } from "@/contexts";
-import Keyboard from "@/components/Keyboard/Keyboard";
+import Keyboard from "@/components/keyboard/Keyboard";
 
 const roboto = Roboto({
   subsets: ["latin"],
@@ -23,6 +23,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <script src="https://unpkg.com/react-scan/dist/auto.global.js" defer />
+      </head>
       <body className={`${roboto.className} antialiased`}>
         <AppProvider>
           <KeyboardProvider>

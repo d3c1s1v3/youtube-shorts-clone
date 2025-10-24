@@ -95,7 +95,6 @@ const Topbar = () => {
             </div>
           )}
         </Button>
-
         <Button>
           <div className="flex justify-center items-center bg-avatar-icon rounded-full w-8 h-8 text-[18px]">
             O

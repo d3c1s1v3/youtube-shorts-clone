@@ -1,19 +1,23 @@
 import Button from "./ui/Button";
-import Topbar from "./Topbar";
+import Hamburger from "./Hamburger";
+import SearchInput from "./SearchInput";
 import Sidebar from "./sidebar/Sidebar";
 import SidebarItem from "./sidebar/SidebarItem";
-import VideoSlider from "./VideoSlider";
-import SearchInput from "./SearchInput";
-import Hamburger from "./Hamburger";
 import SuggestionDropdown from "./SuggestionDropdown";
+import Topbar from "./Topbar";
+import Video from "./video-slider/Video";
+import VideoSlider from "./video-slider/VideoSlider";
+import VideoSlideControls from "./video-slider/VideoSlideControls";
 
 export {
   Button,
-  Topbar,
+  Hamburger,
+  SearchInput,
   Sidebar,
   SidebarItem,
-  VideoSlider,
-  SearchInput,
-  Hamburger,
   SuggestionDropdown,
+  Topbar,
+  Video,
+  VideoSlider,
+  VideoSlideControls,
 };
