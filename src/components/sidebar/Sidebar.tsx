@@ -17,7 +17,7 @@ const Sidebar = () => {
   };
 
   return (
-    <aside className={`fixed pt-1.5  h-screen pl-1`}>
+    <aside className="z-10 fixed pt-1.5 pl-1 h-screen">
       <div className="flex justify-center">
         <Hamburger onClick={toggleHamburgerState} />
       </div>

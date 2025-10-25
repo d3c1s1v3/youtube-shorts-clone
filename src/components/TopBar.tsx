@@ -30,7 +30,7 @@ const Topbar = () => {
   const notificationTooltip = useTooltip();
 
   return (
-    <div className="right-0 fixed flex justify-between items-center pt-2 pr-5 pl-1 w-[calc(100%-80px)] h-[56px]">
+    <div className="right-0 z-10 fixed flex justify-between items-center pt-2 pr-5 pl-1 w-[calc(100%-80px)] h-[56px]">
       <Link href="/">
         <Image
           src="/logo-full.png"
