@@ -13,7 +13,7 @@ const Keyboard = () => {
   return (
     <div
       ref={keyboardRef}
-      className="fixed bg-white p-2.5 w-[517px] h-[214px] text-black"
+      className="z-10 fixed bg-white p-2.5 w-[517px] h-[214px] text-black"
       style={positionStyles}
     >
       <div className="flex">
