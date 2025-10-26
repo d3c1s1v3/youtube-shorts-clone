@@ -4,8 +4,13 @@ interface VideoProps {
 
 const Video = ({ label }: VideoProps) => {
   return (
-    <div className="flex justify-center items-center bg-gray-500 rounded-xl w-[600px] h-9/10">
+    <div className="relative flex flex-col justify-center items-center bg-gray-500 rounded-xl w-[600px] h-9/10">
       {label}
+      <div className="absolute w-full h-full">
+        <button className="top-10 left-10 absolute">1</button>
+        <button className="top-10 left-25 absolute">2</button>
+        <button className="top-10 right-10 absolute">3</button>
+      </div>
     </div>
   );
 };

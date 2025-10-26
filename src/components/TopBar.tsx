@@ -67,7 +67,7 @@ const Topbar = () => {
         >
           <FaMicrophone size={18} />
           {voiceTooltip.tooltip.isVisible && (
-            <div className="top-[150%] left-[50%] absolute bg-overlay-medium p-2 rounded-md text-[12px] text-nowrap -translate-x-[50%]">
+            <div className="top-[150%] left-[50%] absolute bg-overlay-medium p-2 rounded-md text-[12px] text-nowrap -translate-x-[50%] animate-fade-in">
               {voiceTooltip.tooltip.text}
             </div>
           )}

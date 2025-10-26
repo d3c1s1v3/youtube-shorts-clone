@@ -23,13 +23,13 @@ const VideoSlideControls = ({
   return (
     <div className="right-0 fixed flex flex-col justify-center gap-4 px-4 h-[300px]">
       <Button
-        className={`${buttonClasses} transition bg-overlay-light hover:bg-overlay-medium active:bg-overlay-heavy`}
+        className={`${buttonClasses} transition duration-200 bg-overlay-light hover:bg-overlay-medium active:bg-overlay-heavyz border border-transparent active:border-overlay-heavy`}
         onClick={next}
       >
         <FaArrowDown />
       </Button>
       <Button
-        className={`${buttonClasses} absolute transition ${scrollButtonAnimation} bg-overlay-light hover:bg-overlay-medium active:bg-overlay-heavy -z-10`}
+        className={`${buttonClasses} absolute transition ${scrollButtonAnimation} duration-200 bg-overlay-light hover:bg-overlay-medium active:bg-overlay-heavy -z-10 border border-transparent active:border-overlay-heavy`}
         onClick={prev}
       >
         <FaArrowDown className="rotate-180" />
