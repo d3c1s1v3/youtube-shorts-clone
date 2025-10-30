@@ -1,7 +1,15 @@
 import useClickOutside from "./useClickOutside";
+import useDrag from "./useDrag";
+import useKeyboard from "./useKeyboard";
 import useTooltip from "./useTooltip";
 import useTopbar from "./useTopbar";
-import useDrag from "./useDrag";
 import useVideo from "./useVideo";
 
-export { useClickOutside, useTooltip, useTopbar, useDrag, useVideo };
+export {
+  useClickOutside,
+  useDrag,
+  useKeyboard,
+  useTooltip,
+  useTopbar,
+  useVideo,
+};

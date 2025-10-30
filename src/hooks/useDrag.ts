@@ -14,15 +14,18 @@ const useDrag = () => {
   const dragStartRef = useRef({ x: 0, y: 0 });
   const isDraggingRef = useRef(false);
 
-  const handleMouseDown = (e: React.MouseEvent) => {
-    const start = {
-      x: e.clientX - position.x,
-      y: e.clientY - position.y,
-    };
-    setIsDragging(true);
-    isDraggingRef.current = true;
-    dragStartRef.current = start;
-  };
+  const handleMouseDown = useCallback(
+    (e: React.MouseEvent) => {
+      const start = {
+        x: e.clientX - position.x,
+        y: e.clientY - position.y,
+      };
+      setIsDragging(true);
+      isDraggingRef.current = true;
+      dragStartRef.current = start;
+    },
+    [position]
+  );
 
   const handleMouseMove = useCallback((e: MouseEvent) => {
     if (!isDraggingRef || !keyboardRef.current) return;
@@ -82,8 +85,8 @@ const useDrag = () => {
 
   return {
     keyboardRef,
-    handleMouseDown,
     positionStyles,
+    handleMouseDown,
   };
 };
 

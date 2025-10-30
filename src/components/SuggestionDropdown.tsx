@@ -6,9 +6,9 @@ import { useClickOutside } from "@/hooks";
 import { SUGGESTIONS } from "@/constants";
 
 interface SuggestionDropdownProps {
-  handleSubmit: (selectedValue: string) => void;
   isOpen: boolean;
   onClose: () => void;
+  handleSubmit: (selectedValue: string) => void;
 }
 
 const SuggestionDropdown = ({
@@ -20,7 +20,7 @@ const SuggestionDropdown = ({
 
   const displayedSuggestions = SUGGESTIONS.slice(0, 15);
 
-  useClickOutside(dropdownRef, onClose, isOpen);
+  useClickOutside(isOpen, onClose, dropdownRef);
 
   if (!isOpen) return null;
 
