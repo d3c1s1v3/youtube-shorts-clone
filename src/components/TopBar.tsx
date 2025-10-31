@@ -40,7 +40,7 @@ const Topbar = () => {
           priority
         />
       </Link>
-      <div className="flex items-center w-[740px]">
+      <div className="flex justify-center items-center w-[740px]">
         <div className="relative flex w-[536px]">
           <SearchInput
             isTyping={isTyping}
@@ -67,7 +67,7 @@ const Topbar = () => {
         >
           <FaMicrophone size={18} />
           {voiceTooltip.tooltip.isVisible && (
-            <div className="top-[150%] left-[50%] absolute bg-overlay-medium p-2 rounded-md text-[12px] text-nowrap -translate-x-[50%] animate-fade-in">
+            <div className="top-[150%] left-[50%] absolute bg-overlay-medium p-2 rounded-md text-[12px] text-nowrap transition -translate-x-[50%] animate-fade-in duration-200">
               {voiceTooltip.tooltip.text}
             </div>
           )}
@@ -90,7 +90,7 @@ const Topbar = () => {
             9+
           </div>
           {notificationTooltip.tooltip.isVisible && (
-            <div className="top-[200%] left-[50%] absolute bg-overlay-medium p-2 rounded-md text-[12px] text-nowrap -translate-x-[50%]">
+            <div className="top-[200%] left-[50%] absolute bg-overlay-medium p-2 rounded-md text-[12px] text-nowrap transition -translate-x-[50%] animate-fade-in duration-200">
               {notificationTooltip.tooltip.text}
             </div>
           )}
