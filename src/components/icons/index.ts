@@ -7,6 +7,7 @@ import {
 } from "react-icons/fa";
 import { MdOutlineSubscriptions } from "react-icons/md";
 import {
+  IoBackspaceOutline,
   IoCloseSharp,
   IoHomeOutline,
   IoNotificationsOutline,
@@ -21,6 +22,7 @@ export {
   FaMicrophone,
   FaPlus,
   FaRegUserCircle,
+  IoBackspaceOutline,
   IoCloseSharp,
   IoHomeOutline,
   IoNotificationsOutline,

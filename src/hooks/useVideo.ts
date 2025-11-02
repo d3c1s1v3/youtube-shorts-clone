@@ -4,6 +4,7 @@ import { SUGGESTIONS } from "@/constants";
 
 const LAST_VIDEO = SUGGESTIONS.length - 1;
 const SCROLL_COOLDOWN = 400;
+const SCROLL_THRESHOLD = 60;
 
 const useVideo = () => {
   const [current, setCurrent] = useState(0);
@@ -23,6 +24,7 @@ const useVideo = () => {
   const handleWheel = useCallback(
     (e: WheelEvent) => {
       if (coolDownRef.current) return;
+      if (Math.abs(e.deltaY) < SCROLL_THRESHOLD) return;
       if (e.deltaY > 0) next();
       if (e.deltaY < 0) prev();
       coolDownRef.current = true;

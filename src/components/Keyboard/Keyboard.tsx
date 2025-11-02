@@ -3,6 +3,7 @@
 import { useKeyboardContext } from "@/contexts";
 import { useDrag } from "@/hooks";
 import { IoCloseSharp } from "@/components/icons";
+import { KeyboardBody } from "@/components";
 
 const Keyboard = () => {
   const { state, toggleVisibility } = useKeyboardContext();
@@ -31,6 +32,7 @@ const Keyboard = () => {
           />
         </div>
       </div>
+      <KeyboardBody />
     </div>
   );
 };

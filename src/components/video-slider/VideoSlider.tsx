@@ -18,10 +18,7 @@ const VideoSlider = () => {
         }}
       >
         {SUGGESTIONS.slice(0.5).map(({ label }) => (
-          <div
-            className="flex justify-center items-center h-screen"
-            key={label}
-          >
+          <div className="flex justify-center items-center h-full" key={label}>
             <Video label={label} />
           </div>
         ))}
