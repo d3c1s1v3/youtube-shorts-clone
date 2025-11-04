@@ -3,7 +3,7 @@ import { IoBackspaceOutline } from "@/components/icons";
 
 const keyboardLayout = {
   rowOne: [
-    { label: "`" },
+    { label: "~" },
     { label: "1" },
     { label: "2" },
     { label: "3" },
@@ -29,9 +29,9 @@ const keyboardLayout = {
     { label: "i" },
     { label: "o" },
     { label: "p" },
-    { label: "[" },
-    { label: "]" },
-    { label: "\\" },
+    { label: "{" },
+    { label: "}" },
+    { label: "|" },
   ],
   rowThree: [
     { label: "caps" },
@@ -73,10 +73,21 @@ console.log(keyboardLayout);
 
 const KeyboardBody = () => {
   return (
-    <div className="flex">
-      {keyboardLayout.rowOne.map((key) => (
-        <KeyboardKey key={key.label} label={key.label} icon={key.icon} />
-      ))}
+    <div className="mt-2">
+      <div className="flex">
+        {keyboardLayout.rowOne.map((value) => (
+          <KeyboardKey
+            key={value.label}
+            label={value.label}
+            icon={value.icon}
+          />
+        ))}
+      </div>
+      <div className="flex mt-1">
+        {keyboardLayout.rowTwo.map((value) => (
+          <KeyboardKey key={value.label} label={value.label} />
+        ))}
+      </div>
     </div>
   );
 };

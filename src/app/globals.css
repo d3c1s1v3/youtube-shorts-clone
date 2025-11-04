@@ -9,10 +9,16 @@
   --color-accent-gray: #303030;
   --color-avatar-icon: #78909c;
   --color-light-gray: #888888;
+  --color-keyboard-button-bg: #f2f2f2;
+  --color-keyboard-button-border: #d8d8d8;
+  --color-keyboard-text: #444444;
+  --color-keyboard-button-hover: #0f0f0f;
 
   --color-overlay-light: rgba(255, 255, 255, 0.1);
   --color-overlay-medium: rgba(255, 255, 255, 0.2);
   --color-overlay-heavy: rgba(255, 255, 255, 0.3);
+
+  /* --shadow-custom-inset: inset 0px 0px 24px -15px rgba(66, 68, 90, 1); */
 
   --animate-fade-in: fade-in 200ms ease-in-out;
 

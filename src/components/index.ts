@@ -7,7 +7,7 @@ import SearchInput from "./SearchInput";
 import Sidebar from "./sidebar/Sidebar";
 import SidebarItem from "./sidebar/SidebarItem";
 import SuggestionDropdown from "./SuggestionDropdown";
-import Topbar from "./TopBar";
+import Topbar from "./Topbar";
 import Video from "./video-slider/Video";
 import VideoSlideControls from "./video-slider/VideoSlideControls";
 import VideoSlider from "./video-slider/VideoSlider";
