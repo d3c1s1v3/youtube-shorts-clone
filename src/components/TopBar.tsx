@@ -10,8 +10,8 @@ import {
   IoSearchOutline,
   IoNotificationsOutline,
 } from "@/components/icons";
-
 import { Button, SuggestionDropdown, SearchInput } from "@/components";
+import { Tooltip } from "@/components";
 import { useTooltip } from "@/hooks";
 
 const Topbar = () => {
@@ -67,9 +67,7 @@ const Topbar = () => {
         >
           <FaMicrophone size={18} />
           {voiceTooltip.tooltip.isVisible && (
-            <div className="top-[150%] left-[50%] absolute bg-overlay-medium p-2 rounded-md text-[12px] text-nowrap transition -translate-x-[50%] animate-fade-in duration-200">
-              {voiceTooltip.tooltip.text}
-            </div>
+            <Tooltip text={voiceTooltip.tooltip.text} position="bottom" />
           )}
         </Button>
       </div>
@@ -90,9 +88,10 @@ const Topbar = () => {
             9+
           </div>
           {notificationTooltip.tooltip.isVisible && (
-            <div className="top-[200%] left-[50%] absolute bg-overlay-medium p-2 rounded-md text-[12px] text-nowrap transition -translate-x-[50%] animate-fade-in duration-200">
-              {notificationTooltip.tooltip.text}
-            </div>
+            <Tooltip
+              text={notificationTooltip.tooltip.text}
+              position="bottom"
+            />
           )}
         </Button>
         <Button>

@@ -4,7 +4,7 @@ import { FormEvent, useRef } from "react";
 
 import { IoSearchOutline, FaKeyboard, TfiClose } from "@/components/icons";
 import { Button } from "@/components";
-import { useKeyboardContext } from "@/contexts";
+import { useKeyboardContext, useAppContext } from "@/contexts";
 
 interface SearchInputProps {
   isTyping: boolean;

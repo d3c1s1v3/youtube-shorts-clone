@@ -3,6 +3,7 @@
 import { Button } from "@/components";
 import { FaArrowDown } from "@/components/icons";
 import { useTooltip } from "@/hooks";
+import { Tooltip } from "@/components";
 
 interface VideoSlideControlsProps {
   current: number;
@@ -33,9 +34,7 @@ const VideoSlideControls = ({
       >
         <FaArrowDown className="rotate-180" />
         {prevTooltip.tooltip.isVisible && (
-          <div className="top-[50%] absolute bg-overlay-medium p-2 rounded-md text-[12px] text-nowrap -translate-x-[100%] -translate-y-[50%] animate-fade-in">
-            {prevTooltip.tooltip.text}
-          </div>
+          <Tooltip text="Poprzedni film" position="left" />
         )}
       </Button>
       <Button
@@ -45,9 +44,7 @@ const VideoSlideControls = ({
       >
         <FaArrowDown />
         {nextTooltip.tooltip.isVisible && (
-          <div className="top-[50%] absolute bg-overlay-medium p-2 rounded-md text-[12px] text-nowrap -translate-x-[100%] -translate-y-[50%] animate-fade-in">
-            {nextTooltip.tooltip.text}
-          </div>
+          <Tooltip text="Następny film" position="left" />
         )}
       </Button>
     </div>
