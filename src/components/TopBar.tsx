@@ -63,11 +63,11 @@ const Topbar = () => {
         </div>
         <Button
           className="relative bg-overlay-light hover:bg-overlay-medium active:bg-overlay-heavy ml-4 p-3 border border-transparent active:border-overlay-heavy rounded-full transition"
-          {...voiceTooltip.tooltipHandlers("Wyszukaj głosowo")}
+          {...voiceTooltip.tooltipHandlers()}
         >
           <FaMicrophone size={18} />
           {voiceTooltip.tooltip.isVisible && (
-            <Tooltip text={voiceTooltip.tooltip.text} position="bottom" />
+            <Tooltip text="Szukaj Głosowo" position="bottom" />
           )}
         </Button>
       </div>
@@ -79,19 +79,13 @@ const Topbar = () => {
             <span className="text-sm">Utwórz</span>
           </div>
         </Button>
-        <Button
-          className="relative"
-          {...notificationTooltip.tooltipHandlers("Powiadomienia")}
-        >
+        <Button className="relative" {...notificationTooltip.tooltipHandlers()}>
           <IoNotificationsOutline size={24} />
           <div className="-top-1 -right-2 absolute flex justify-center items-center rounded-lg w-5 h-4 text-[12px] bg-accent-red">
             9+
           </div>
           {notificationTooltip.tooltip.isVisible && (
-            <Tooltip
-              text={notificationTooltip.tooltip.text}
-              position="bottom"
-            />
+            <Tooltip text="Powiadomienia" position="bottom" />
           )}
         </Button>
         <Button>

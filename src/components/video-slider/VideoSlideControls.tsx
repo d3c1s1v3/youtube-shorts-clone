@@ -19,6 +19,9 @@ const VideoSlideControls = ({
   const prevTooltip = useTooltip();
   const nextTooltip = useTooltip();
 
+  const showPrevTooltip = prevTooltip.tooltip.isVisible;
+  const showNextTooltip = nextTooltip.tooltip.isVisible;
+
   const scrolled = current > 0;
   const buttonClasses = `w-14 h-14 bg-overlay-light p-4 rounded-full flex items-center justify-center`;
   const scrollButtonAnimation = scrolled
@@ -28,24 +31,20 @@ const VideoSlideControls = ({
   return (
     <div className="right-0 fixed flex flex-col justify-center gap-4 px-4 h-[300px]">
       <Button
-        className={`${buttonClasses} absolute transition ${scrollButtonAnimation} duration-200 bg-overlay-light hover:bg-overlay-medium active:bg-overlay-heavy -z-10 border border-transparent active:border-overlay-heavy`}
+        {...prevTooltip.tooltipHandlers()}
         onClick={prev}
-        {...prevTooltip.tooltipHandlers("Poprzedni film")}
+        className={`${buttonClasses} ${scrollButtonAnimation} absolute transition duration-200 bg-overlay-light hover:bg-overlay-medium active:bg-overlay-heavy -z-10 border border-transparent active:border-overlay-heavy`}
       >
         <FaArrowDown className="rotate-180" />
-        {prevTooltip.tooltip.isVisible && (
-          <Tooltip text="Poprzedni film" position="left" />
-        )}
+        {showPrevTooltip && <Tooltip text="Poprzedni film" position="left" />}
       </Button>
       <Button
-        className={`${buttonClasses} transition duration-200 bg-overlay-light hover:bg-overlay-medium active:bg-overlay-heavy border border-transparent active:border-overlay-heavy`}
+        {...nextTooltip.tooltipHandlers()}
         onClick={next}
-        {...nextTooltip.tooltipHandlers("Następny film")}
+        className={`${buttonClasses} transition duration-200 bg-overlay-light hover:bg-overlay-medium active:bg-overlay-heavy border border-transparent active:border-overlay-heavy`}
       >
         <FaArrowDown />
-        {nextTooltip.tooltip.isVisible && (
-          <Tooltip text="Następny film" position="left" />
-        )}
+        {showNextTooltip && <Tooltip text="Następny film" position="left" />}
       </Button>
     </div>
   );
