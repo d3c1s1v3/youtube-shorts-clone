@@ -11,12 +11,18 @@ const useVideo = () => {
 
   const coolDownRef = useRef(false);
 
-  const prev = useCallback(() => {
+  const nextVideo = current + 1;
+
+  useEffect(() => {
+    console.log(nextVideo);
+  }, [current]);
+
+  const handlePrev = useCallback(() => {
     if (current === 0) return;
     setCurrent((c) => Math.min(c - 1, current));
   }, [current]);
 
-  const next = useCallback(() => {
+  const handleNext = useCallback(() => {
     if (current === LAST_VIDEO) return;
     setCurrent((c) => Math.min(c + 1, LAST_VIDEO));
   }, [current]);
@@ -25,14 +31,14 @@ const useVideo = () => {
     (e: WheelEvent) => {
       if (coolDownRef.current) return;
       if (Math.abs(e.deltaY) < SCROLL_THRESHOLD) return;
-      if (e.deltaY > 0) next();
-      if (e.deltaY < 0) prev();
+      if (e.deltaY > 0) handleNext();
+      if (e.deltaY < 0) handlePrev();
       coolDownRef.current = true;
       setTimeout(() => {
         coolDownRef.current = false;
       }, SCROLL_COOLDOWN);
     },
-    [prev, next]
+    [handlePrev, handleNext]
   );
 
   useEffect(() => {
@@ -42,8 +48,9 @@ const useVideo = () => {
 
   return {
     current,
-    prev,
-    next,
+    nextVideo,
+    handlePrev,
+    handleNext,
     handleWheel,
   };
 };

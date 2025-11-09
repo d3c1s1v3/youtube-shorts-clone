@@ -21,8 +21,8 @@ const VideoSlideControls = ({
 
   const showPrevTooltip = prevTooltip.tooltip.isVisible;
   const showNextTooltip = nextTooltip.tooltip.isVisible;
-
   const scrolled = current > 0;
+
   const buttonClasses = `w-14 h-14 bg-overlay-light p-4 rounded-full flex items-center justify-center`;
   const scrollButtonAnimation = scrolled
     ? "-translate-y-20"
