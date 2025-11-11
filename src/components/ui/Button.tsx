@@ -12,14 +12,15 @@ interface ButtonProps {
 
 const Button = ({
   children,
-  className,
-  style,
+  className = "",
+  style = {},
   onClick,
   onMouseEnter,
   onMouseLeave,
 }: ButtonProps) => {
   return (
     <button
+      type="button"
       style={style}
       className={className}
       onClick={onClick}

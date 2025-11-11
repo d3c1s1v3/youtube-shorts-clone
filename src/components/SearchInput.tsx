@@ -50,9 +50,9 @@ const SearchInput = ({
             placeholder="Szukaj"
             className="ml-6 outline-none w-full h-[40px]"
             value={inputValue}
+            ref={inputRef}
             onFocus={onFocus}
             onChange={onChange}
-            ref={inputRef}
           />
         </form>
         <div className="flex items-center gap-2 px-2">

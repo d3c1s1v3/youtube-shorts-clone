@@ -7,8 +7,6 @@ const Tooltip = ({ text, position }: TooltipProps) => {
   const bottom = position === "bottom";
   const left = position === "left";
 
-  if (!position && !text) return;
-
   return (
     <>
       {bottom && (

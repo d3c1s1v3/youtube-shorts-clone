@@ -11,12 +11,6 @@ const useVideo = () => {
 
   const coolDownRef = useRef(false);
 
-  const nextVideo = current + 1;
-
-  useEffect(() => {
-    console.log(nextVideo);
-  }, [current]);
-
   const handlePrev = useCallback(() => {
     if (current === 0) return;
     setCurrent((c) => Math.min(c - 1, current));
@@ -48,7 +42,6 @@ const useVideo = () => {
 
   return {
     current,
-    nextVideo,
     handlePrev,
     handleNext,
     handleWheel,

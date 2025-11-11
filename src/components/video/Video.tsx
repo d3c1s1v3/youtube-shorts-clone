@@ -4,7 +4,7 @@ interface VideoProps {
 
 const Video = ({ label }: VideoProps) => {
   return (
-    <div className="relative flex flex-col justify-center items-center border rounded-xl w-2/11 h-9/10 translate-y-6">
+    <div className="relative flex flex-col justify-center items-center border-1 rounded-xl w-2/11 h-9/10 translate-y-6">
       {label}
       <div className="absolute w-full h-full">
         <button className="top-10 left-10 absolute">1</button>

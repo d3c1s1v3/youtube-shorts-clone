@@ -9,9 +9,10 @@ import SidebarItem from "./sidebar/SidebarItem";
 import SuggestionDropdown from "./SuggestionDropdown";
 import Tooltip from "./Tooltip";
 import Topbar from "./Topbar";
-import Video from "./video-slider/Video";
-import VideoSlideControls from "./video-slider/VideoSlideControls";
-import VideoSlider from "./video-slider/VideoSlider";
+import Video from "./video/Video";
+import VideoDescription from "./video/VideoDescription";
+import VideoSliderControls from "./video/VideoSlideControls";
+import VideoSlider from "./video/VideoSlider";
 
 export {
   Button,
@@ -26,6 +27,7 @@ export {
   Tooltip,
   Topbar,
   Video,
-  VideoSlideControls,
+  VideoDescription,
+  VideoSliderControls,
   VideoSlider,
 };

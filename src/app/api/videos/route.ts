@@ -1,7 +1,7 @@
+import { SUGGESTIONS } from "@/constants";
+
 import { NextResponse } from "next/server";
 
 export async function GET() {
-  const res = "Hello from API endpoint";
-
-  return NextResponse.json(res);
+  return NextResponse.json(SUGGESTIONS);
 }
