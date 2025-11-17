@@ -16,7 +16,7 @@ import { useTooltip } from "@/hooks";
 
 const Topbar = () => {
   const {
-    shouldShowClear,
+    showClearButton,
     isTyping,
     inputValue,
     handleChangeInput,
@@ -48,7 +48,7 @@ const Topbar = () => {
             onFocus={onFocus}
             onChange={handleChangeInput}
             onClear={onClear}
-            shouldShowClear={shouldShowClear}
+            showClearButton={showClearButton}
           />
           {isTyping && (
             <SuggestionDropdown

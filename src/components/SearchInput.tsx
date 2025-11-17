@@ -12,13 +12,13 @@ interface SearchInputProps {
   onFocus: () => void;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onClear: () => void;
-  shouldShowClear: boolean;
+  showClearButton: boolean;
 }
 
 const SearchInput = ({
   isTyping,
   inputValue,
-  shouldShowClear,
+  showClearButton,
   onFocus,
   onChange,
   onClear,
@@ -63,7 +63,7 @@ const SearchInput = ({
             <FaKeyboard size={18} />
           </Button>
           <Button className="flex items-center gap-2" onClick={onClear}>
-            {shouldShowClear && (
+            {showClearButton && (
               <TfiClose
                 size={30}
                 className="hover:bg-overlay-light p-1 rounded-full transition"

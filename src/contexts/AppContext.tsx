@@ -2,13 +2,13 @@
 
 import { createContext, useContext, ReactNode } from "react";
 
-import { useTopbar } from "@/hooks";
+import { useInput } from "@/hooks";
 
 interface AppContextI {
   isTyping: boolean;
   inputValue: string;
   sidebarOpen?: boolean;
-  shouldShowClear: boolean;
+  showClearButton: boolean;
   setIsTyping: (typing: boolean) => void;
   setInputValue?: (value: string) => void;
   handleChangeInput: (e: React.ChangeEvent<HTMLInputElement>) => void;
@@ -21,10 +21,10 @@ interface AppContextI {
 const AppContext = createContext<AppContextI | null>(null);
 
 export const AppProvider = ({ children }: { children: ReactNode }) => {
-  const topbarState = useTopbar();
+  const inputState = useInput();
 
   const value = {
-    ...topbarState,
+    ...inputState,
   };
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;

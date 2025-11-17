@@ -1,10 +1,10 @@
-import { useEffect, useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 
-const useTopbar = () => {
+const useInput = () => {
   const [isTyping, setIsTyping] = useState(false);
   const [inputValue, setInputValue] = useState("");
 
-  const shouldShowClear = !!inputValue;
+  const showClearButton = !!inputValue;
 
   const handleChangeInput = (e: React.ChangeEvent<HTMLInputElement>) =>
     setInputValue(e.target.value);
@@ -43,7 +43,7 @@ const useTopbar = () => {
   }, [isTyping]);
 
   return {
-    shouldShowClear,
+    showClearButton,
     isTyping,
     inputValue,
     handleChangeInput,
@@ -53,4 +53,5 @@ const useTopbar = () => {
     handleSubmit,
   };
 };
-export default useTopbar;
+
+export default useInput;
